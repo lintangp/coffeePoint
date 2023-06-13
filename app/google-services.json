@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "54861631579",
+    "project_id": "coffeepoint789",
+    "storage_bucket": "coffeepoint789.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54861631579:android:2e097aeab7901f7f3a6f7e",
+        "android_client_info": {
+          "package_name": "com.lintang.coffee_point"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54861631579-gssaehiebcr5fcsncqjjv0qnju91d3td.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lintang.coffee_point",
+            "certificate_hash": "d6da05e0a2cec2de0566a84d285825fd329b1501"
+          }
+        },
+        {
+          "client_id": "54861631579-3gjpjv9q8op04m2rb4a2kantg7ihqndo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRR-rPW5xj8R5-6kWpJAE_QR8KNBAHdBg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54861631579-3gjpjv9q8op04m2rb4a2kantg7ihqndo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
