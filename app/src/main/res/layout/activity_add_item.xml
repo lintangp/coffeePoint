@@ -1,0 +1,187 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fontFamily="@font/haha"
+    >
+
+    <!-- Gambar di atas inputan -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#C58940"
+        android:id="@id/navAtas">
+
+        <TextView
+            android:id="@+id/textAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add new item"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:paddingLeft="0dp"
+            />
+
+    </FrameLayout>
+    <TextView
+        android:paddingStart="20dp"
+        android:id="@+id/textName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="ITEM NAME"
+        android:layout_below="@id/navAtas"
+        android:layout_marginTop="20dp"
+        android:textSize="16dp"
+
+        />
+
+    <EditText
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/textName"
+        android:hint="Enter item name"
+        android:background="@drawable/edittext2_background"
+        android:padding="10dp" />
+
+    <TextView
+        android:paddingStart="20dp"
+        android:id="@+id/textUploadFoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="UPLOAD PHOTO"
+        android:layout_below="@id/editTextName"
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+
+        />
+    <LinearLayout
+        android:layout_marginHorizontal="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/textUploadFoto"
+        android:layout_marginTop="15dp"
+        android:id="@+id/uploaded"
+        android:gravity="center">
+
+        <FrameLayout
+            android:layout_marginHorizontal="12dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:background="@drawable/edittext2_background">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:src="@drawable/upload" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_marginEnd="12dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:background="@drawable/edittext2_background">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:src="@drawable/upload" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_marginEnd="14dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:background="@drawable/edittext2_background">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:src="@drawable/upload" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginHorizontal="20dp"
+        android:id="@+id/textEnterPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="PRICE"
+        android:layout_below="@id/uploaded"
+        android:textSize="16dp"
+        android:layout_marginTop="10dp"
+
+        />
+    <EditText
+        android:layout_marginHorizontal="20dp"
+        android:id="@+id/editPrice"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/textEnterPrice"
+        android:layout_marginTop="10dp"
+        android:hint="Enter price"
+        android:background="@drawable/edittext2_background"
+        android:padding="10dp" />
+    <TextView
+        android:layout_marginHorizontal="20dp"
+        android:id="@+id/texteditdesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="DETAIL"
+        android:layout_below="@id/editPrice"
+        android:textSize="16dp"
+        android:layout_marginTop="10dp"
+
+        />
+    <EditText
+        android:layout_marginHorizontal="20dp"
+        android:id="@id/editDesc"
+        android:layout_width="match_parent"
+        android:layout_height="102dp"
+        android:layout_below="@id/texteditdesc"
+        android:layout_marginTop="10dp"
+        android:hint="Enter description"
+        android:paddingStart="20dp"
+        android:background="@drawable/edittext2_background"
+
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Changes"
+        android:background="@drawable/button_background"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_above="@id/bottomNavigationView" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:padding="10dp"
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemIconTint="@color/selector_menu_item"
+        app:itemTextColor="@color/selector_menu_item"
+        app:menu="@menu/bottom_navigation_menu" />
+
+</RelativeLayout>

@@ -1,0 +1,103 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/coklat_muda"
+    android:fontFamily="@font/haha"
+    android:layout_height="match_parent">
+
+    <!-- Gambar di atas inputan -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:background="#E5BA73"
+        android:id="@id/gambarlogin">
+
+        <ImageView
+            android:id="@+id/gambarlogin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/gambarlogin"
+            android:scaleType="centerInside" />
+
+    </FrameLayout>
+
+    <!-- Inputan username -->
+    <EditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="260dp"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/gambarlogin"
+        android:layout_marginTop="100dp"
+        android:paddingLeft="20dp"
+        android:hint="Username"
+        android:background="@drawable/edittext_background"
+        android:textColorHint="#888888"
+        android:inputType="text" />
+
+    <!-- Inputan password -->
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="260dp"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/usernameEditText"
+        android:layout_marginTop="16dp"
+        android:paddingLeft="20dp"
+        android:hint="Password"
+        android:background="@drawable/edittext_background"
+        android:textColorHint="#888888"
+        android:inputType="textPassword" />
+
+    <!-- Tombol Login -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/loginButton"
+        android:layout_width="260dp"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/passwordEditText"
+        android:layout_marginTop="24dp"
+        android:text="Login"
+        android:background="@drawable/button_background"
+        android:textColor="#FFFFFF" />
+
+    <!-- Text "Lupa kata sandi?" -->
+
+    <!-- Text "Belum punya akun? Register" -->
+
+    <TextView
+        android:id="@+id/forgotPasswordTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="-111dp"
+        android:layout_marginTop="19dp"
+        android:layout_toEndOf="@+id/loginButton"
+        android:text="Lupa kata sandi?"
+        android:textColor="#000000" />
+
+    <!-- Text "Register" (bold) -->
+
+    <TextView
+        android:id="@+id/registerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:text="Belum memiliki akun? "
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/registerBoldTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/registerTextView"
+
+        android:layout_toEndOf="@id/registerTextView"
+        android:text="Register"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+</RelativeLayout>

@@ -1,0 +1,7 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/edit_color" /> <!-- Ganti dengan warna latar belakang yang diinginkan -->
+    <corners android:radius="10dp" /> <!-- Border radius -->
+    <stroke
+        android:color="#E8EAED"
+        android:width="2dp" />
+</shape>

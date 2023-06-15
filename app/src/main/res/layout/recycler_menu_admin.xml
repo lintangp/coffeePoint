@@ -1,0 +1,80 @@
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/imageMenu"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="start|center_vertical">
+
+                <TextView
+                    android:id="@+id/textNamaMakanan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="50dp"
+                    android:fontFamily="@font/haha"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonEdit"
+                    android:layout_width="43.48dp"
+                    android:layout_height="20dp"
+                    android:text="edit"
+                    android:textSize="12dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_background"
+                     />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonHapus"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:text="Delete"
+                    android:textColor="@color/coklat"
+                    android:textSize="12dp"
+                    android:background="@drawable/edittext_background"
+                    android:layout_marginStart="8dp" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/textHargaMakanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/hijau"
+                android:fontFamily="@font/haha"/>
+
+            <TextView
+                android:justificationMode="inter_word"
+                android:id="@+id/textPenjelasanMakanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/haha"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
