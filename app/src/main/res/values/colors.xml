@@ -7,9 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="coklat">#E5BA73</color>
+    <color name="coklat_tua">#C58940</color> // color 4
+    <color name="coklat">#E5BA73</color> // color 3
+    <color name="kuning_muda">#FAEAB1</color> // color 2
     <color name="coklat_muda">#F8EEDC</color>
-    <color name="edit_color">#FAF8F1</color>
+    <color name="edit_color">#FAF8F1</color> // color 1
     <color name="hijau">#2BAF6A</color>
+    <color name="merah">#E42217</color>
 
 </resources>
