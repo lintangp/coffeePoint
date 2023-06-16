@@ -31,11 +31,12 @@ public class MenuAdmin extends AppCompatActivity {
     private List<MenuAdminItem> menuAdminItems;
     Button btn_add, btn_edit, btn_hapus;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    ProgressDialog progressDialog = new ProgressDialog(MenuAdmin.this);
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        progressDialog = new ProgressDialog(MenuAdmin.this);
         setContentView(R.layout.activity_menu_admin);
         recyclerViewMenuAdmin = findViewById(R.id.recyclerViewMenu);
         recyclerViewMenuAdmin.setLayoutManager(new LinearLayoutManager(this));
@@ -76,6 +77,6 @@ public class MenuAdmin extends AppCompatActivity {
         });
 
 
-        // Mengupdate tampilan RecyclerView
+
     }
 }

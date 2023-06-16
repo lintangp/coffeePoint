@@ -37,6 +37,11 @@ public class MenuAdminAdapter extends RecyclerView.Adapter<MenuAdminAdapter.Menu
     public Dialog getDialog(){
         return  dialog;
     }
+    public interface OnItemClickListener{
+        void onEditClick(int position);
+        void onDeleteClick(int position);
+
+    }
 
 
     @Override
