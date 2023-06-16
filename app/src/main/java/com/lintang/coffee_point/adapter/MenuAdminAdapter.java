@@ -1,5 +1,6 @@
 package com.lintang.coffee_point.adapter;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.lintang.coffee_point.MenuAdmin;
 import com.lintang.coffee_point.Model.MenuAdminItem;
 import com.lintang.coffee_point.R;
 
@@ -21,6 +21,7 @@ public class MenuAdminAdapter extends RecyclerView.Adapter<MenuAdminAdapter.Menu
 
     private final List<MenuAdminItem> menuAdminItems;
     private Context context;
+    private  Dialog dialog;
 
     public MenuAdminAdapter(Context context, List<MenuAdminItem> menuAdminItems) {
         this.context = context;
@@ -32,6 +33,9 @@ public class MenuAdminAdapter extends RecyclerView.Adapter<MenuAdminAdapter.Menu
     public MenuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.recycler_menu_admin, parent, false);
         return new MenuViewHolder(view);
+    }
+    public Dialog getDialog(){
+        return  dialog;
     }
 
 
@@ -61,6 +65,7 @@ public class MenuAdminAdapter extends RecyclerView.Adapter<MenuAdminAdapter.Menu
     public int getItemCount() {
         return menuAdminItems.size();
     }
+
 
     public static class MenuViewHolder extends RecyclerView.ViewHolder {
         ImageView imageMenu;

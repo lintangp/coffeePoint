@@ -6,7 +6,7 @@ public class MenuAdminItem {
     private String hargaMakanan;
     private String penjelasanMakanan;
 
-    public MenuAdminItem(int imageResource, String namaMakanan, String hargaMakanan, String penjelasanMakanan) {
+    public MenuAdminItem( String namaMakanan, String hargaMakanan, String penjelasanMakanan) {
         this.imageResource = imageResource;
         this.namaMakanan = namaMakanan;
         this.hargaMakanan = hargaMakanan;
