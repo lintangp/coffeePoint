@@ -15,4 +15,28 @@
     <color name="hijau">#2BAF6A</color>
     <color name="merah">#E42217</color>
 
+    <!-- Dark Brown -->
+    <color name="primary_1_900">#FFC58940</color>
+    <color name="primary_1_500">#80C58940</color>
+    <color name="primary_1_200">#33C58940</color>
+    
+    <!-- Medium Brown -->
+    <color name="primary_2_900">#FFE5BA73</color>
+    <color name="primary_2_500">#80E5BA73</color>
+    <color name="primary_2_200">#33E5BA73</color>
+    
+    <!-- Light Brown -->
+    <color name="primary_3_900">#FFFAEAB1</color>
+    <color name="primary_3_500">#80FAEAB1</color>
+    <color name="primary_3_200">#33FAEAB1</color>
+    
+    <!-- White Brown -->
+    <color name="primary_4_900">#FFFAF8F1</color>
+    <color name="primary_4_500">#80FAF8F1</color>
+    <color name="primary_4_200">#33FAF8F1</color>
+    
+    <!-- Warning and Success -->
+    <color name="waring">#E42217</color>
+    <color name="success">#2BAF6A</color>
+
 </resources>
