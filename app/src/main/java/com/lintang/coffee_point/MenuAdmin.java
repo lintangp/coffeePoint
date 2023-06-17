@@ -57,14 +57,15 @@ public class MenuAdmin extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                         if(task.isSuccessful()){
                                             for (QueryDocumentSnapshot document : task.getResult()){
-                                                MenuAdminItem menuAdmin = new MenuAdminItem(document.getString("name"), document.getString("harga"), document.getString("desc"));
+                                                MenuAdminItem menuAdmin = new MenuAdminItem(document.getString("name"), document.getString("harga"), document.getString("desc"),document.getString("gambar"));
                                                 menuAdminItems.add(menuAdmin);
                                             }
                                             menuAdminAdapter.notifyDataSetChanged();
 
                                         }else{
-                                            Toast.makeText(getApplicationContext(), "Data gagal", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), "Data gagal di ambil", Toast.LENGTH_SHORT).show();
                                         }
+                                        progressDialog.dismiss();
                                     }
                                 });
 

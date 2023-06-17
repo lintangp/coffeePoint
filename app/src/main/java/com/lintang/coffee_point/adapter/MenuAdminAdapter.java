@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.lintang.coffee_point.Model.MenuAdminItem;
 import com.lintang.coffee_point.R;
 
@@ -47,7 +48,7 @@ public class MenuAdminAdapter extends RecyclerView.Adapter<MenuAdminAdapter.Menu
     @Override
     public void onBindViewHolder(@NonNull MenuViewHolder menuViewHolder, int position) {
         MenuAdminItem menuItem = menuAdminItems.get(position);
-        menuViewHolder.imageMenu.setImageResource(menuItem.getImageResource());
+        Glide.with(context).load(menuItem.getImageResource()).into(menuViewHolder.imageMenu);
         menuViewHolder.textNamaMakanan.setText(menuItem.getNamaMakanan());
         menuViewHolder.textHargaMakanan.setText(menuItem.getHargaMakanan());
         menuViewHolder.textPenjelasanMakanan.setText(menuItem.getPenjelasanMakanan());

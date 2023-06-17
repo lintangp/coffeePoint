@@ -1,19 +1,19 @@
 package com.lintang.coffee_point.Model;
 
 public class MenuAdminItem {
-    private int imageResource;
+    private String imageResource;
     private String namaMakanan;
     private String hargaMakanan;
     private String penjelasanMakanan;
 
-    public MenuAdminItem( String namaMakanan, String hargaMakanan, String penjelasanMakanan) {
-        this.imageResource = imageResource;
+    public MenuAdminItem( String namaMakanan, String hargaMakanan, String penjelasanMakanan, String gambar) {
+        this.imageResource = gambar;
         this.namaMakanan = namaMakanan;
         this.hargaMakanan = hargaMakanan;
         this.penjelasanMakanan = penjelasanMakanan;
     }
 
-    public int getImageResource() {
+    public String getImageResource() {
         return imageResource;
     }
 
