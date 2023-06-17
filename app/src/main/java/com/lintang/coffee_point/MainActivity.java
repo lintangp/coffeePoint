@@ -24,7 +24,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     FragmentManager fm;
-    Fragment detailMenu, checkout, info;
+    Fragment detailMenu, checkout, history, info;
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.fm = getSupportFragmentManager();
         this.detailMenu = new FragmentDetailMenu();
         this.checkout = new FragmentCheckout();
+        this.history = new FragmentHistory();
         this.info = new FragmentInfo();
 
         // sementara, seharusnya diganti home/dashboard
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     case R.id.menu_riwayat:
                         // menampilkan history
-
+                        getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, history).commit();
                         return true;
 
                     case R.id.menu_tentang:
