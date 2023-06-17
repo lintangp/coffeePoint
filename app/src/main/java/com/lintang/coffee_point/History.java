@@ -1,14 +1,46 @@
 package com.lintang.coffee_point;
 
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+public class History {
 
-public class History extends AppCompatActivity {
+    String transaction, date, time, payment;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history);
+    public History(String transaction, String date, String time, String payment){
+        this.transaction = transaction;
+        this.date = date;
+        this.time = time;
+        this.payment = payment;
+    }
+
+    public String getTransaction() {
+        return transaction;
+    }
+
+    public void setTransaction(String transaction) {
+        this.transaction = transaction;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getPayment() {
+        return payment;
+    }
+
+    public void setPayment(String payment) {
+        this.payment = payment;
     }
 }
