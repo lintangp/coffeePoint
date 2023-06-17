@@ -7,8 +7,8 @@
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
-        android:layout_width="406dp"
-        android:layout_height="293dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -17,21 +17,25 @@
         android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
         android:text="Android Coffee Point"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/coklat_tua"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mapView" />
 
     <TextView
-        android:id="@+id/text2"
-        android:layout_width="365dp"
-        android:layout_height="393dp"
-        android:layout_marginTop="84dp"
+        android:id="@+id/textinfo"
+        android:layout_width="397dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="28dp"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a ex aliquam nisi pulvinar aliquet. Sed fringilla ante id mi mattis, ut tempor erat luctus. Ut vel est eu elit facilisis cursus. Nam gravida molestie consectetur. Quisque at consequat nunc. Donec consequat lacinia mauris, sit amet suscipit felis vulputate eget. Quisque fermentum lectus non est egestas bibendum. Cras eleifend vehicula consectetur. Sed sit amet quam pharetra, finibus justo id, cursus nulla."
-        android:textSize="24sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapView" />
+        app:layout_constraintTop_toBottomOf="@+id/text1" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

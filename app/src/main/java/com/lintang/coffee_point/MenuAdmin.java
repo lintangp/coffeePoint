@@ -76,8 +76,5 @@ public class MenuAdmin extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
     }
 }

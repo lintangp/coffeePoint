@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.fm = getSupportFragmentManager();
         this.detailMenu = new FragmentDetailMenu();
         this.checkout = new FragmentCheckout();
+        this.info = new FragmentInfo();
 
         // sementara, seharusnya diganti home/dashboard
         getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, detailMenu).commit();
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     case R.id.menu_tentang:
                         // menampilkan info restoran
-
+                        getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, info).commit();
                         return true;
 
                 }
