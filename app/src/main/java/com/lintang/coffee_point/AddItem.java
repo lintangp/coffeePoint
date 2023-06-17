@@ -68,8 +68,6 @@ public class AddItem extends AppCompatActivity {
                 saveData(ed_judul.getText().toString(),ed_harga.getText().toString(),ed_desk.getText().toString());
             }
         });
-
-
     }
     private void selectedImage(){
         final CharSequence[] items = {"Take Photo", "Choose from Library","Cancel"};
