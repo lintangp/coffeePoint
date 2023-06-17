@@ -78,6 +78,7 @@ public class AddItem extends AppCompatActivity {
                 upload(ed_judul.getText().toString(),ed_harga.getText().toString(),ed_desk.getText().toString());
             }
         });
+
         Intent intent = getIntent();
         if(intent!=null){
             id = intent.getStringExtra("id");
@@ -86,6 +87,7 @@ public class AddItem extends AppCompatActivity {
             ed_harga.setText(intent.getStringExtra("harga"));
             Glide.with(getApplicationContext()).load(intent.getStringExtra("gambar")).into(gambar);
         }
+
 
 
     }

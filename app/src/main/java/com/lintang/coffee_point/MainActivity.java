@@ -24,11 +24,8 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     FragmentManager fm;
-
-    Fragment detailMenu, checkout;
-
+    Fragment detailMenu, checkout, info;
     BottomNavigationView bottomNavigationView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
