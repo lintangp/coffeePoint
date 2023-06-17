@@ -19,29 +19,26 @@ import com.lintang.coffee_point.R;
 import java.util.List;
 
 public class MenuAdminAdapter extends RecyclerView.Adapter<MenuAdminAdapter.MenuViewHolder> {
-
+    private final RecyclerViewInterface recyclerViewInterface;
     private final List<MenuAdminItem> menuAdminItems;
     private Context context;
     private  Dialog dialog;
 
-    public MenuAdminAdapter(Context context, List<MenuAdminItem> menuAdminItems) {
+    public MenuAdminAdapter(Context context, List<MenuAdminItem> menuAdminItems, RecyclerViewInterface recyclerViewInterface) {
         this.context = context;
         this.menuAdminItems = menuAdminItems;
+        this.recyclerViewInterface = recyclerViewInterface;
     }
 
     @NonNull
     @Override
     public MenuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.recycler_menu_admin, parent, false);
-        return new MenuViewHolder(view);
+        return new MenuViewHolder(LayoutInflater.from(this.context)
+                .inflate(R.layout.recycler_menu_admin, parent, false), recyclerViewInterface
+        );
     }
     public Dialog getDialog(){
         return  dialog;
-    }
-    public interface OnItemClickListener{
-        void onEditClick(int position);
-        void onDeleteClick(int position);
-
     }
 
 
@@ -52,18 +49,7 @@ public class MenuAdminAdapter extends RecyclerView.Adapter<MenuAdminAdapter.Menu
         menuViewHolder.textNamaMakanan.setText(menuItem.getNamaMakanan());
         menuViewHolder.textHargaMakanan.setText(menuItem.getHargaMakanan());
         menuViewHolder.textPenjelasanMakanan.setText(menuItem.getPenjelasanMakanan());
-        menuViewHolder.btn_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
-        menuViewHolder.btn_hapus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 
 
@@ -81,7 +67,7 @@ public class MenuAdminAdapter extends RecyclerView.Adapter<MenuAdminAdapter.Menu
         Button btn_hapus;
         Button btn_edit;
 
-        public MenuViewHolder(@NonNull View itemView) {
+        public MenuViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
             imageMenu = itemView.findViewById(R.id.imageMenu);
             textNamaMakanan = itemView.findViewById(R.id.textNamaMakanan);
@@ -89,6 +75,25 @@ public class MenuAdminAdapter extends RecyclerView.Adapter<MenuAdminAdapter.Menu
             textPenjelasanMakanan = itemView.findViewById(R.id.textPenjelasanMakanan);
             btn_edit = itemView.findViewById(R.id.buttonEdit);
             btn_hapus = itemView.findViewById(R.id.buttonHapus);
+
+            this.btn_edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+
+            this.btn_hapus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(recyclerViewInterface != null){
+                        int pos = getAdapterPosition();
+                        if(pos != RecyclerView.NO_POSITION){
+                            recyclerViewInterface.onDelete(pos);
+                        }
+                    }
+                }
+            });
         }
     }
 }
