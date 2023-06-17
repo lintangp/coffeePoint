@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.lintang.coffee_point.History;
+import com.lintang.coffee_point.Model.HistoryTransaction;
 import com.lintang.coffee_point.R;
 
 import java.util.ArrayList;
@@ -69,9 +69,8 @@ import java.util.List;
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ContactViewHolder>
 {
     private Context context;
-    private List<History> HistoryList;
-    private static ClickListener clickListener;
-    public HistoryAdapter(Context context, ArrayList<History> HistoryList){
+    private List<HistoryTransaction> HistoryList;
+    public HistoryAdapter(Context context, ArrayList<HistoryTransaction> HistoryList){
         this.context = context;
         this.HistoryList = HistoryList;
     }
@@ -86,10 +85,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ContactV
 
     @Override
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
-        final History history = HistoryList.get(position);
+        final HistoryTransaction history = HistoryList.get(position);
         holder.tvTransaction.setText(history.getTransaction());
         holder.tvDatetime.setText(history.getDate() + " " + history.getTime());
-        holder.tvPayment.setText(history.getPayment());
+        holder.tvPayment.setText("Rp" + history.getPayment());
     }
 
     @Override
@@ -97,8 +96,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ContactV
         return HistoryList.size();
     }
 
-    public class ContactViewHolder extends
-            RecyclerView.ViewHolder implements View.OnClickListener
+    public class ContactViewHolder extends RecyclerView.ViewHolder
     {
         TextView tvTransaction, tvDatetime, tvPayment;
         public ContactViewHolder(@NonNull View itemView) {
@@ -107,18 +105,5 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ContactV
             tvDatetime = itemView.findViewById(R.id.tvDatetime);
             tvPayment = itemView.findViewById(R.id.tvPayment);
             }
-
-        @Override
-        public void onClick(View v) {
-            clickListener.onItemClick(getAdapterPosition(), itemView);
         }
-    }
-
-    public void
-    setOnItemClickListener(HistoryAdapter.ClickListener clickListener) {
-        HistoryAdapter.clickListener = clickListener;
-    }
-    public interface ClickListener {
-        void onItemClick(int position, View v);
-    }
 }

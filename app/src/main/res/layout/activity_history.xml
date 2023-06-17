@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_4_500"
+    android:background="@drawable/gradient_color"
     tools:context=".History">
 
     <TextView
@@ -20,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHistory"
         android:layout_marginTop="32dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
