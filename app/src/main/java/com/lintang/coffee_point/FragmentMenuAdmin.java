@@ -113,7 +113,7 @@ public class FragmentMenuAdmin extends Fragment implements RecyclerViewInterface
         progressDialog.setTitle("Loading");
         progressDialog.setMessage("Menghapus data...");
         progressDialog.show();
-        db.collection("restaurant").document(menuAdminItems.get(position).getDocId())
+        db.collection("restaurant").document(menuAdminItems.get(position).getId())
                 .delete()
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -137,7 +137,7 @@ public class FragmentMenuAdmin extends Fragment implements RecyclerViewInterface
     public void onEdit(int position) {
         MenuAdminItem menuAdminItem = menuAdminItems.get(position);
         Intent intent = new Intent(requireContext(), UpdateMenu.class);
-        intent.putExtra("docId", menuAdminItem.getDocId());
+        intent.putExtra("docId", menuAdminItem.getId());
         intent.putExtra("name", menuAdminItem.getNamaMakanan());
         intent.putExtra("harga", menuAdminItem.getHargaMakanan());
         intent.putExtra("desc", menuAdminItem.getPenjelasanMakanan());

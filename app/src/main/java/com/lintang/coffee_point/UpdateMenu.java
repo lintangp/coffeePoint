@@ -19,13 +19,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -58,22 +55,22 @@ public class UpdateMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_menu);
         MenuItem menuItem = (MenuItem) getIntent().getSerializableExtra("menuItem");
+        Bundle bundle = getIntent().getExtras();
 //        restaurantCollection = db.collection("restaurant");
 
-        ed_name = findViewById(R.id.editTextName);
-        gambar = findViewById(R.id.gambar);
-        ed_harga = findViewById(R.id.editPrice);
-        ed_desk = findViewById(R.id.editDesc);
-        btnSave = findViewById(R.id.save);
+        ed_name = findViewById(R.id.etUpdateName);
+        gambar = findViewById(R.id.updateGambar);
+        ed_harga = findViewById(R.id.etUpdatePrice);
+        ed_desk = findViewById(R.id.etUpdateDesc);
+        btnSave = findViewById(R.id.saveUpdate);
 
         gambar.setOnClickListener(v -> {
             selectedImage();
         });
 
-        ed_name.setText(menuItem.getNamaMakanan());
-        ed_desk.setText(menuItem.getPenjelasanMakanan());
-        ed_harga.setText(menuItem.getHargaMakanan());
-        Glide.with(getApplicationContext()).load(menuItem.getImageResource()).into(gambar);
+        ed_name.setText(bundle.getString("name"));
+        ed_desk.setText(bundle.getString("harga"));
+        ed_harga.setText(bundle.getString("desc"));
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override

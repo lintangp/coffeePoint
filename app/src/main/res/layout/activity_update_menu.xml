@@ -42,7 +42,7 @@
     <EditText
         android:layout_marginTop="10dp"
         android:layout_marginHorizontal="20dp"
-        android:id="@+id/editTextName"
+        android:id="@+id/etUpdateName"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@id/textName"
@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:text="UPLOAD PHOTO"
-        android:layout_below="@id/editTextName"
+        android:layout_below="@id/etUpdateName"
         android:layout_marginTop="10dp"
         android:textSize="16dp"
 
@@ -79,7 +79,7 @@
             android:background="@drawable/edittext2_background">
 
             <ImageView
-                android:id="@+id/gambar"
+                android:id="@+id/updateGambar"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
@@ -102,7 +102,7 @@
         />
     <EditText
         android:layout_marginHorizontal="20dp"
-        android:id="@+id/editPrice"
+        android:id="@+id/etUpdatePrice"
         android:layout_width="110dp"
         android:layout_height="50dp"
         android:layout_below="@id/textEnterPrice"
@@ -117,13 +117,13 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:text="DETAIL"
-        android:layout_below="@id/editPrice"
+        android:layout_below="@id/etUpdatePrice"
         android:textSize="16dp"
         android:layout_marginTop="10dp"
         />
     <EditText
         android:layout_marginHorizontal="20dp"
-        android:id="@id/editDesc"
+        android:id="@id/etUpdateDesc"
         android:layout_width="match_parent"
         android:layout_height="102dp"
         android:layout_below="@id/texteditdesc"
@@ -141,7 +141,7 @@
         android:text="Save Changes"
         android:background="@drawable/button_background"
         android:textColor="@color/white"
-        android:id="@+id/save"
+        android:id="@+id/saveUpdate"
         android:padding="10dp"
         android:layout_marginTop="20dp"
         android:layout_above="@id/bottomNavigationView" />

@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.lintang.coffee_point.MenuAdmin;
 import com.lintang.coffee_point.Model.MenuAdminItem;
 import com.lintang.coffee_point.R;
 import com.lintang.coffee_point.UpdateMenu;
@@ -88,7 +87,7 @@ public class MenuAdminAdapter extends RecyclerView.Adapter<MenuAdminAdapter.Menu
 
                         // Buka activity UpdateMenu untuk mengedit data dengan menggunakan Intent
                         Intent intent = new Intent(context, UpdateMenu.class);
-                        intent.putExtra("menu_id", menuItem.getDocId());
+                        intent.putExtra("menu_id", menuItem.getId());
                         context.startActivity(intent);
                     }
                 }

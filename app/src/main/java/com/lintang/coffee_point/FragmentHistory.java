@@ -101,15 +101,19 @@ public class FragmentHistory extends Fragment {
         progressDialog = new ProgressDialog(requireContext());
 
         rvHistory = lhistory.findViewById(R.id.rvHistory);
+        rvHistory.setHasFixedSize(true);
         rvHistory.setLayoutManager(new LinearLayoutManager(requireContext()));
+
         historyItems = new ArrayList<>();
         historyAdapter = new HistoryAdapter(requireContext(), historyItems);
         rvHistory.setAdapter(historyAdapter);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false);
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false);
+//        RecyclerView.ItemDecoration decoration = new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL);
+//
+//        rvHistory.setLayoutManager(layoutManager);
+//        rvHistory.addItemDecoration(decoration);
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL);
-
-        rvHistory.setLayoutManager(layoutManager);
         rvHistory.addItemDecoration(decoration);
 
         return lhistory;
