@@ -69,10 +69,12 @@ import java.util.List;
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ContactViewHolder>
 {
     private Context context;
-    private List<HistoryTransaction> HistoryList;
-    public HistoryAdapter(Context context, ArrayList<HistoryTransaction> HistoryList){
+    private final List<HistoryTransaction> HistoryList;
+//    private final RecyclerViewInterface recyclerViewInterface;
+    public HistoryAdapter(Context context, List<HistoryTransaction> HistoryList){
         this.context = context;
         this.HistoryList = HistoryList;
+//        this.recyclerViewInterface = recyclerViewInterface;
     }
 
     @NonNull

@@ -2,6 +2,7 @@ package com.lintang.coffee_point.adapter;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.lintang.coffee_point.MenuAdmin;
 import com.lintang.coffee_point.Model.MenuAdminItem;
 import com.lintang.coffee_point.R;
+import com.lintang.coffee_point.UpdateMenu;
 
 import java.util.List;
 
@@ -79,7 +82,16 @@ public class MenuAdminAdapter extends RecyclerView.Adapter<MenuAdminAdapter.Menu
             this.btn_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    int menu = getAdapterPosition();
 
+                    // below line is creating a new intent.
+//                    Intent i = new Intent(context, UpdateMenu.class);
+//
+//                    // below line is for putting our course object to our next activity.
+//                    i.putExtra("menuUpdate", menu);
+//
+//                    // after passing the data we are starting our activity.
+//                    context.startActivity(i);
                 }
             });
 

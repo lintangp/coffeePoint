@@ -45,7 +45,7 @@ public class FragmentMenuAdmin extends Fragment implements RecyclerViewInterface
             @NonNull LayoutInflater inflater,
             @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
-        lhMenuAdmin = inflater.inflate(R.layout.activity_menu_admin, container, false);
+        lhMenuAdmin = inflater.inflate(R.layout.activity_menu_admin, null, false);
 
         progressDialog = new ProgressDialog(requireContext());
 

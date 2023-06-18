@@ -119,7 +119,35 @@ public class MenuAdmin extends AppCompatActivity implements RecyclerViewInterfac
     }
 
     @Override
-    public void onEdit(int porition) {
-
+    public void onEdit(int position) {
+//        progressDialog.setTitle("Loading");
+//        progressDialog.setMessage("Mengupdate data...");
+//        progressDialog.show();
+//        db.collection("restaurant").document(menuAdminItems.get(position).getDocId()).
+//                update(<>)
+//                .addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//                menuAdminItems.clear();
+//                if(task.isSuccessful()){
+//                    for (QueryDocumentSnapshot document : task.getResult()){
+//                        MenuAdminItem menuAdmin = new MenuAdminItem(document.getId(), document.getString("name"), document.getString("harga"), document.getString("desc"),document.getString("gambar"));
+//                        menuAdminItems.(menuAdmin);
+//                    }
+//                    menuAdminAdapter.notifyDataSetChanged();
+//
+//                }else{
+//                    Toast.makeText(getApplicationContext(), "Data gagal di update", Toast.LENGTH_SHORT).show();
+//                }
+//                progressDialog.dismiss();
+//            }
+//        })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        progressDialog.dismiss();
+//                        Toast.makeText(getApplicationContext(), "Data gagal di hapus", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
     }
 }
