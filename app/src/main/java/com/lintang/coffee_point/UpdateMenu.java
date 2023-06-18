@@ -68,26 +68,22 @@ public class UpdateMenu extends AppCompatActivity {
             etName.setText(bundle.getString("name"));
             etDesc.setText(bundle.getString("desc"));
             etHarga.setText(bundle.getString("harga"));
-        } else {
-            etName.setText("Bundle kosong");
-            etDesc.setText("Bundle kosong");
-            etHarga.setText("0");
+            id = bundle.getString("id");
         }
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MenuItem menuItem = bundle.getParcelable("menuItem");
                 menuName = etName.getText().toString();
                 menuDesc = etDesc.getText().toString();
                 menuHarga = etHarga.getText().toString();
 
-                update(menuItem, menuName, menuDesc, menuHarga);
+                update(menuName, menuDesc, menuHarga);
             }
         });
     }
 
-    private void update(MenuItem menuItem, String menuName, String menuDesc, String menuHarga) {
+    private void update(String menuName, String menuDesc, String menuHarga) {
         progressDialog = new ProgressDialog(UpdateMenu.this);
         progressDialog.setTitle("Loading");
         progressDialog.setMessage("Menyimpan...");
@@ -101,12 +97,14 @@ public class UpdateMenu extends AppCompatActivity {
         byte[] data = baos.toByteArray();
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference reference = storage.getReference("images").child("IMG" + new Date().getTime() + ".jpeg");
+        StorageReference reference = storage.getReference("images")
+                .child("IMG" + new Date().getTime() + ".jpeg");
         UploadTask uploadTask = reference.putBytes(data);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), e.getLocalizedMessage(),
+                        Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -114,26 +112,30 @@ public class UpdateMenu extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 if (taskSnapshot.getMetadata() != null) {
                     if (taskSnapshot.getMetadata().getReference() != null) {
-                        taskSnapshot.getMetadata().getReference().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                        taskSnapshot.getMetadata().getReference().getDownloadUrl()
+                                .addOnCompleteListener(new OnCompleteListener<Uri>() {
                             @Override
                             public void onComplete(@NonNull Task<Uri> task) {
                                 if (task.isSuccessful()) {
                                     Uri downloadUri = task.getResult();
                                     String imageUrl = downloadUri.toString();
-                                    saveData(menuItem, menuName, menuHarga, menuDesc, imageUrl);
+                                    saveData(menuName, menuHarga, menuDesc, imageUrl);
                                 } else {
-                                    Toast.makeText(getApplicationContext(), "Gagal mengunggah gambar", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),
+                                            "Gagal mengunggah gambar", Toast.LENGTH_SHORT).show();
                                     progressDialog.dismiss();
                                 }
                             }
                         });
                     } else {
                         progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "Gagal mengunggah gambar", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),
+                                "Gagal mengunggah gambar", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     progressDialog.dismiss();
-                    Toast.makeText(getApplicationContext(), "Gagal mengunggah gambar", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),
+                            "Gagal mengunggah gambar", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -188,21 +190,22 @@ public class UpdateMenu extends AppCompatActivity {
         }
     }
 
-    private void saveData(MenuItem menuItem, String name, String harga, String desc, String gambar) {
+    private void saveData(String name, String harga, String desc, String gambar) {
         Map<String, Object> menu = new HashMap<>();
         menu.put("name", name);
         menu.put("harga", harga);
         menu.put("desc", desc);
         menu.put("gambar", gambar);
 
-        if (menuItem != null && menuItem.getId() != null) {
+        if (id != null) {
             db.collection("restaurant")
-                    .document(menuItem.getId())
+                    .document(id)
                     .set(menu)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast.makeText(getApplicationContext(), "Berhasil mengubah data", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),
+                                    "Berhasil mengubah data", Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
                             finish();
                         }
@@ -210,7 +213,8 @@ public class UpdateMenu extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getApplicationContext(), "Gagal mengubah data", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),
+                                    "Gagal mengubah data", Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
                         }
                     });
@@ -220,15 +224,3 @@ public class UpdateMenu extends AppCompatActivity {
         }
     }
 }
-
-//    Kode program ini mengandung beberapa perbaikan:
-//
-//        ProgressDialog dideklarasikan dan diinisialisasi di dalam metode update sebelum digunakan.
-//        Penanganan Firebase Storage telah diperbarui dengan menggunakan taskSnapshot.getDownloadUrl() yang telah diganti dengan taskSnapshot.getMetadata().getReference().getDownloadUrl().
-//        Menambahkan pengecekan keberhasilan tugas (task.isSuccessful()) ketika mendapatkan URL unduhan gambar.
-//        Mengubah fungsi saveData agar dapat memeriksa jika menuItem atau ID-nya tidak valid sebelum mengubah data di Firebase Firestore.
-//        Menambahkan penanganan kesalahan saat gagal mengunggah gambar atau mengubah data.
-//        Menggunakan Uri.toString() untuk mendapatkan URL unduhan gambar dari Uri yang didapat dari tugas unggah gambar.
-//        Harap diingat bahwa Anda perlu memastikan bahwa dependensi Firebase dan konfigurasi proyek telah ditambahkan dengan benar dalam proyek Anda. Selain itu, pastikan bahwa aturan akses di Firebase Firestore dan Firebase Storage telah dikonfigurasi dengan benar untuk mengizinkan operasi yang diperlukan.
-//
-//        Anda juga dapat menyesuaikan kode program ini sesuai dengan kebutuhan dan struktur data Firebase Firestore Anda.

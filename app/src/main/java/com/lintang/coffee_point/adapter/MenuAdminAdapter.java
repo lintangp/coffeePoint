@@ -28,7 +28,9 @@ public class MenuAdminAdapter extends RecyclerView.Adapter<MenuAdminAdapter.Menu
     private Context context;
     private  Dialog dialog;
 
-    public MenuAdminAdapter(Context context, List<MenuAdminItem> menuAdminItems, RecyclerViewInterface recyclerViewInterface) {
+    public MenuAdminAdapter(
+            Context context, List<MenuAdminItem> menuAdminItems,
+            RecyclerViewInterface recyclerViewInterface) {
         this.context = context;
         this.menuAdminItems = menuAdminItems;
         this.recyclerViewInterface = recyclerViewInterface;
@@ -94,7 +96,6 @@ public class MenuAdminAdapter extends RecyclerView.Adapter<MenuAdminAdapter.Menu
                         intent.putExtra("harga", menuItem.getHargaMakanan());
                         intent.putExtra("desc", menuItem.getPenjelasanMakanan());
                         intent.putExtra("gambar", menuItem.getImageResource());
-//                        intent.putExtra("menuItem", (Parcelable) menuItem);
                         context.startActivity(intent);
                     }
                 }
