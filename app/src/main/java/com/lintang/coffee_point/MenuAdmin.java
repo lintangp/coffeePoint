@@ -3,6 +3,7 @@ package com.lintang.coffee_point;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.lintang.coffee_point.Model.MenuAdminItem;
+import com.lintang.coffee_point.Model.MenuItem;
 import com.lintang.coffee_point.adapter.MenuAdminAdapter;
 import com.lintang.coffee_point.adapter.RecyclerViewInterface;
 
@@ -122,11 +124,12 @@ public class MenuAdmin extends AppCompatActivity implements RecyclerViewInterfac
     public void onEdit(int position) {
         MenuAdminItem menu = menuAdminItems.get(position);
         Intent intent = new Intent(MenuAdmin.this, UpdateMenu.class);
-        intent.putExtra("docId", menu.getId());
+        intent.putExtra("id", menu.getId());
         intent.putExtra("name", menu.getNamaMakanan());
         intent.putExtra("harga", menu.getHargaMakanan());
         intent.putExtra("desc", menu.getPenjelasanMakanan());
         intent.putExtra("gambar", menu.getImageResource());
+        intent.putExtra("menuItem", (Parcelable) menu);
         startActivity(intent);
 
         //progressDialog.setTitle("Loading");

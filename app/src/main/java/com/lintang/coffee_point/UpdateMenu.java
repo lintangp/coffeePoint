@@ -27,6 +27,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.lintang.coffee_point.Model.MenuAdminItem;
 import com.lintang.coffee_point.Model.MenuItem;
 
 import java.io.ByteArrayOutputStream;
@@ -38,7 +39,7 @@ import java.util.Map;
 
 public class UpdateMenu extends AppCompatActivity {
 
-    EditText ed_name, ed_desk, ed_harga;
+    EditText etName, etDesc, etHarga;
     ImageView gambar;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     Button btnSave;
@@ -54,30 +55,36 @@ public class UpdateMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_menu);
-        MenuItem menuItem = (MenuItem) getIntent().getSerializableExtra("menuItem");
         Bundle bundle = getIntent().getExtras();
 //        restaurantCollection = db.collection("restaurant");
 
-        ed_name = findViewById(R.id.etUpdateName);
+        etName = findViewById(R.id.etUpdateName);
         gambar = findViewById(R.id.updateGambar);
-        ed_harga = findViewById(R.id.etUpdatePrice);
-        ed_desk = findViewById(R.id.etUpdateDesc);
+        etHarga = findViewById(R.id.etUpdatePrice);
+        etDesc = findViewById(R.id.etUpdateDesc);
         btnSave = findViewById(R.id.saveUpdate);
 
         gambar.setOnClickListener(v -> {
             selectedImage();
         });
 
-        ed_name.setText(bundle.getString("name"));
-        ed_desk.setText(bundle.getString("harga"));
-        ed_harga.setText(bundle.getString("desc"));
+        if (bundle != null) {
+            etName.setText(bundle.getString("name"));
+            etDesc.setText(bundle.getString("harga"));
+            etHarga.setText(bundle.getString("desc"));
+        } else {
+            etName.setText("Bundle kosong");
+            etDesc.setText("Bundle kosong");
+            etHarga.setText("0");
+        }
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                menuName = ed_name.getText().toString();
-                menuDesc = ed_desk.getText().toString();
-                menuHarga = ed_harga.getText().toString();
+                MenuItem menuItem = bundle.getParcelable("menuItem");
+                menuName = etName.getText().toString();
+                menuDesc = etDesc.getText().toString();
+                menuHarga = etHarga.getText().toString();
 
                 update(menuItem, menuName, menuDesc, menuHarga);
             }

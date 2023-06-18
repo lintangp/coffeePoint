@@ -123,7 +123,7 @@
         />
     <EditText
         android:layout_marginHorizontal="20dp"
-        android:id="@id/etUpdateDesc"
+        android:id="@+id/etUpdateDesc"
         android:layout_width="match_parent"
         android:layout_height="102dp"
         android:layout_below="@id/texteditdesc"
