@@ -1,30 +1,25 @@
 package com.lintang.coffee_point;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     FragmentManager fm;
-    Fragment detailMenu, checkout, history, info;
+    Fragment detailMenu, checkout, history, info, MenuAdmin;
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -41,9 +36,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.checkout = new FragmentCheckout();
         this.history = new FragmentHistory();
         this.info = new FragmentInfo();
+        this.MenuAdmin = new FragmentMenuAdmin();
 
         // sementara, seharusnya diganti home/dashboard
-        getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, detailMenu).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, MenuAdmin).commit();
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -52,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     case R.id.menu_beranda:
                         // menampilkan home/dashboard
+                        getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, MenuAdmin).commit();
                         return true;
 
                     case R.id.menu_pesanan:
