@@ -3,7 +3,6 @@ package com.lintang.coffee_point;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -21,7 +20,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.lintang.coffee_point.Model.MenuAdminItem;
-import com.lintang.coffee_point.Model.MenuItem;
 import com.lintang.coffee_point.adapter.MenuAdminAdapter;
 import com.lintang.coffee_point.adapter.RecyclerViewInterface;
 

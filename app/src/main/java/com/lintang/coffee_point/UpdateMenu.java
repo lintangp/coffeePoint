@@ -27,7 +27,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.lintang.coffee_point.Model.MenuItem;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
