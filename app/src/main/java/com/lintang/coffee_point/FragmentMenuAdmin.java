@@ -135,6 +135,13 @@ public class FragmentMenuAdmin extends Fragment implements RecyclerViewInterface
 
     @Override
     public void onEdit(int position) {
-
+        MenuAdminItem menuAdminItem = menuAdminItems.get(position);
+        Intent intent = new Intent(requireContext(), UpdateMenu.class);
+        intent.putExtra("docId", menuAdminItem.getDocId());
+        intent.putExtra("name", menuAdminItem.getNamaMakanan());
+        intent.putExtra("harga", menuAdminItem.getHargaMakanan());
+        intent.putExtra("desc", menuAdminItem.getPenjelasanMakanan());
+        intent.putExtra("gambar", menuAdminItem.getImageResource());
+        startActivity(intent);
     }
 }

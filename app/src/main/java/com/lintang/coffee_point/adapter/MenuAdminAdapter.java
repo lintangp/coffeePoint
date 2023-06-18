@@ -62,7 +62,7 @@ public class MenuAdminAdapter extends RecyclerView.Adapter<MenuAdminAdapter.Menu
     }
 
 
-    public static class MenuViewHolder extends RecyclerView.ViewHolder {
+    public class MenuViewHolder extends RecyclerView.ViewHolder {
         ImageView imageMenu;
         TextView textNamaMakanan;
         TextView textHargaMakanan;
@@ -82,16 +82,15 @@ public class MenuAdminAdapter extends RecyclerView.Adapter<MenuAdminAdapter.Menu
             this.btn_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int menu = getAdapterPosition();
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        MenuAdminItem menuItem = menuAdminItems.get(position);
 
-                    // below line is creating a new intent.
-//                    Intent i = new Intent(context, UpdateMenu.class);
-//
-//                    // below line is for putting our course object to our next activity.
-//                    i.putExtra("menuUpdate", menu);
-//
-//                    // after passing the data we are starting our activity.
-//                    context.startActivity(i);
+                        // Buka activity UpdateMenu untuk mengedit data dengan menggunakan Intent
+                        Intent intent = new Intent(context, UpdateMenu.class);
+                        intent.putExtra("menu_id", menuItem.getDocId());
+                        context.startActivity(intent);
+                    }
                 }
             });
 

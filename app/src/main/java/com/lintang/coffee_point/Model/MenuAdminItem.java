@@ -15,9 +15,7 @@ public class MenuAdminItem {
         this.penjelasanMakanan = penjelasanMakanan;
     }
 
-    public String getDocId() {
-        return docId;
-    }
+    public String getDocId() { return docId; }
 
     public String getImageResource() {
         return imageResource;
