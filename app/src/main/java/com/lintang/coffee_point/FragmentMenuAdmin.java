@@ -59,7 +59,7 @@ public class FragmentMenuAdmin extends Fragment implements RecyclerViewInterface
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false);
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL);
 
-        showData();
+
 
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,9 +72,15 @@ public class FragmentMenuAdmin extends Fragment implements RecyclerViewInterface
         return lhMenuAdmin;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        showData();
+    }
+
     public void showData() {
         progressDialog.setTitle("Loading");
-        progressDialog.setMessage("Mengambil data...");
+        progressDialog.setMessage("...");
         progressDialog.show();
         db.collection("restaurant")
                 .get()

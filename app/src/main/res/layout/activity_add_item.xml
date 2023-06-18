@@ -82,8 +82,8 @@
             <ImageView
                 android:id="@+id/gambar"
                 android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="33dp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
                 android:src="@drawable/upload" />
 
         </FrameLayout>

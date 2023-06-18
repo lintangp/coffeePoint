@@ -76,17 +76,17 @@ public class AddItem extends AppCompatActivity {
         save.setOnClickListener(v ->{
             if(ed_judul.getText().length()>0&&ed_harga.getText().length()>0&&ed_desk.getText().length()>0){
                 upload(ed_judul.getText().toString(),ed_harga.getText().toString(),ed_desk.getText().toString());
+                Intent intent = getIntent();
+                if(intent!=null){
+                    ed_judul.setText(intent.getStringExtra("name"));
+                    ed_desk.setText(intent.getStringExtra("desc"));
+                    ed_harga.setText(intent.getStringExtra("harga"));
+                    Glide.with(getApplicationContext()).load(intent.getStringExtra("gambar")).into(gambar);
+                }
             }
         });
 
-        Intent intent = getIntent();
-        if(intent!=null){
-            id = intent.getStringExtra("id");
-            ed_judul.setText(intent.getStringExtra("name"));
-            ed_desk.setText(intent.getStringExtra("desc"));
-            ed_harga.setText(intent.getStringExtra("harga"));
-            Glide.with(getApplicationContext()).load(intent.getStringExtra("gambar")).into(gambar);
-        }
+
 
 
 
