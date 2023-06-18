@@ -27,7 +27,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.lintang.coffee_point.Model.MenuAdminItem;
 import com.lintang.coffee_point.Model.MenuItem;
 
 import java.io.ByteArrayOutputStream;
@@ -44,19 +43,16 @@ public class UpdateMenu extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     Button btnSave;
 
-//    CollectionReference restaurantCollection;
     Uri imageUri;
     ProgressDialog progressDialog;
     String id = "";
     String menuName, menuDesc, menuHarga;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_menu);
         Bundle bundle = getIntent().getExtras();
-//        restaurantCollection = db.collection("restaurant");
 
         etName = findViewById(R.id.etUpdateName);
         gambar = findViewById(R.id.updateGambar);
@@ -70,8 +66,8 @@ public class UpdateMenu extends AppCompatActivity {
 
         if (bundle != null) {
             etName.setText(bundle.getString("name"));
-            etDesc.setText(bundle.getString("harga"));
-            etHarga.setText(bundle.getString("desc"));
+            etDesc.setText(bundle.getString("desc"));
+            etHarga.setText(bundle.getString("harga"));
         } else {
             etName.setText("Bundle kosong");
             etDesc.setText("Bundle kosong");
@@ -89,32 +85,14 @@ public class UpdateMenu extends AppCompatActivity {
                 update(menuItem, menuName, menuDesc, menuHarga);
             }
         });
-
-
-//        progressDialog = new ProgressDialog(UpdateMenu.this);
-//        progressDialog.setTitle("Loading");
-//        progressDialog.setMessage("Menyimpan...");
-//
-//        save.setOnClickListener(v -> {
-//            if (ed_judul.getText().length() > 0 && ed_harga.getText().length() > 0 && ed_desk.getText().length() > 0) {
-//                update(ed_judul.getText().toString(), ed_harga.getText().toString(), ed_desk.getText().toString());
-//            }
-//        });
-//
-//        Intent intent = getIntent();
-//        if (intent != null) {
-//            id = intent.getStringExtra("id");
-//            ed_judul.setText(intent.getStringExtra("name"));
-//            ed_desk.setText(intent.getStringExtra("desc"));
-//            ed_harga.setText(intent.getStringExtra("harga"));
-//            Glide.with(getApplicationContext()).load(intent.getStringExtra("gambar")).into(gambar);
-//        }
     }
 
-    private void update(
-            MenuItem menuItem, String menuName,
-            String menuDesc, String menuHarga) {
+    private void update(MenuItem menuItem, String menuName, String menuDesc, String menuHarga) {
+        progressDialog = new ProgressDialog(UpdateMenu.this);
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("Menyimpan...");
         progressDialog.show();
+
         gambar.setDrawingCacheEnabled(true);
         gambar.buildDrawingCache();
         Bitmap bitmap = ((BitmapDrawable) gambar.getDrawable()).getBitmap();
@@ -139,20 +117,23 @@ public class UpdateMenu extends AppCompatActivity {
                         taskSnapshot.getMetadata().getReference().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
                             @Override
                             public void onComplete(@NonNull Task<Uri> task) {
-                                if (task.getResult() != null) {
-                                    saveData(menuItem, menuName, menuHarga, menuDesc, task.getResult().toString());
+                                if (task.isSuccessful()) {
+                                    Uri downloadUri = task.getResult();
+                                    String imageUrl = downloadUri.toString();
+                                    saveData(menuItem, menuName, menuHarga, menuDesc, imageUrl);
                                 } else {
-                                    Toast.makeText(getApplicationContext(), "gagal", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Gagal mengunggah gambar", Toast.LENGTH_SHORT).show();
+                                    progressDialog.dismiss();
                                 }
                             }
                         });
                     } else {
                         progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "gagal", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Gagal mengunggah gambar", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     progressDialog.dismiss();
-                    Toast.makeText(getApplicationContext(), "gagal", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Gagal mengunggah gambar", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -180,7 +161,7 @@ public class UpdateMenu extends AppCompatActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 20 && resultCode == RESULT_OK & data != null) {
+        if (requestCode == 20 && resultCode == RESULT_OK && data != null) {
             final Uri path = data.getData();
             Thread thread = new Thread(() -> {
                 try {
@@ -205,7 +186,6 @@ public class UpdateMenu extends AppCompatActivity {
             });
             thread.start();
         }
-
     }
 
     private void saveData(MenuItem menuItem, String name, String harga, String desc, String gambar) {
@@ -215,15 +195,14 @@ public class UpdateMenu extends AppCompatActivity {
         menu.put("desc", desc);
         menu.put("gambar", gambar);
 
-        progressDialog.show();
-        if (id != null) {
+        if (menuItem != null && menuItem.getId() != null) {
             db.collection("restaurant")
                     .document(menuItem.getId())
                     .set(menu)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast.makeText(getApplicationContext(), "berhasil", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Berhasil mengubah data", Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
                             finish();
                         }
@@ -231,11 +210,25 @@ public class UpdateMenu extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getApplicationContext(), "gagal", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Gagal mengubah data", Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
-
                         }
                     });
+        } else {
+            progressDialog.dismiss();
+            Toast.makeText(getApplicationContext(), "Data tidak valid", Toast.LENGTH_SHORT).show();
         }
     }
 }
+
+//    Kode program ini mengandung beberapa perbaikan:
+//
+//        ProgressDialog dideklarasikan dan diinisialisasi di dalam metode update sebelum digunakan.
+//        Penanganan Firebase Storage telah diperbarui dengan menggunakan taskSnapshot.getDownloadUrl() yang telah diganti dengan taskSnapshot.getMetadata().getReference().getDownloadUrl().
+//        Menambahkan pengecekan keberhasilan tugas (task.isSuccessful()) ketika mendapatkan URL unduhan gambar.
+//        Mengubah fungsi saveData agar dapat memeriksa jika menuItem atau ID-nya tidak valid sebelum mengubah data di Firebase Firestore.
+//        Menambahkan penanganan kesalahan saat gagal mengunggah gambar atau mengubah data.
+//        Menggunakan Uri.toString() untuk mendapatkan URL unduhan gambar dari Uri yang didapat dari tugas unggah gambar.
+//        Harap diingat bahwa Anda perlu memastikan bahwa dependensi Firebase dan konfigurasi proyek telah ditambahkan dengan benar dalam proyek Anda. Selain itu, pastikan bahwa aturan akses di Firebase Firestore dan Firebase Storage telah dikonfigurasi dengan benar untuk mengizinkan operasi yang diperlukan.
+//
+//        Anda juga dapat menyesuaikan kode program ini sesuai dengan kebutuhan dan struktur data Firebase Firestore Anda.

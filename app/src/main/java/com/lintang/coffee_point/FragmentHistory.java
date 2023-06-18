@@ -62,6 +62,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -108,11 +109,6 @@ public class FragmentHistory extends Fragment {
         historyAdapter = new HistoryAdapter(requireContext(), historyItems);
         rvHistory.setAdapter(historyAdapter);
 
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false);
-//        RecyclerView.ItemDecoration decoration = new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL);
-//
-//        rvHistory.setLayoutManager(layoutManager);
-//        rvHistory.addItemDecoration(decoration);
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL);
         rvHistory.addItemDecoration(decoration);
 
@@ -127,7 +123,7 @@ public class FragmentHistory extends Fragment {
 
     public void showData() {
         progressDialog.setTitle("Loading");
-        progressDialog.setMessage("...");
+        progressDialog.setMessage("Mengambil data...");
         progressDialog.show();
         db.collection("history")
                 .get()
@@ -142,7 +138,7 @@ public class FragmentHistory extends Fragment {
                             }
                             historyAdapter.notifyDataSetChanged();
                         } else {
-                            // Handle error
+                            Toast.makeText(requireContext(), "Data gagal diambil", Toast.LENGTH_SHORT).show();
                         }
                         progressDialog.dismiss();
                     }
