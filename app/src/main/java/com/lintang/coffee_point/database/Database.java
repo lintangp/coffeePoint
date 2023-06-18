@@ -1,2 +1,3 @@
-package com.lintang.coffee_point.database;public class Database {
+package com.lintang.coffee_point.database;
+public class Database {
 }

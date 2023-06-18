@@ -1,6 +1,12 @@
 package com.lintang.coffee_point.Model;
 
-public class MenuItem {
+import com.google.firebase.database.Exclude;
+
+import java.io.Serializable;
+
+public class MenuItem implements Serializable {
+    @Exclude
+    private String id;
     private int imageResource;
     private String namaMakanan;
     private String hargaMakanan;
@@ -12,6 +18,10 @@ public class MenuItem {
         this.hargaMakanan = hargaMakanan;
         this.penjelasanMakanan = penjelasanMakanan;
     }
+
+    public String getId() {return this.id;}
+
+    public void setId(String id) {this.id = id;}
 
     public int getImageResource() {
         return imageResource;
