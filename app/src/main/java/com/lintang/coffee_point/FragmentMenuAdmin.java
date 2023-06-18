@@ -45,7 +45,7 @@ public class FragmentMenuAdmin extends Fragment implements RecyclerViewInterface
             @NonNull LayoutInflater inflater,
             @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
-        lhMenuAdmin = inflater.inflate(R.layout.activity_menu_admin, container, false);
+        lhMenuAdmin = inflater.inflate(R.layout.activity_menu_admin, null, false);
 
         progressDialog = new ProgressDialog(requireContext());
 
@@ -58,8 +58,6 @@ public class FragmentMenuAdmin extends Fragment implements RecyclerViewInterface
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false);
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL);
-
-
 
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +111,7 @@ public class FragmentMenuAdmin extends Fragment implements RecyclerViewInterface
         progressDialog.setTitle("Loading");
         progressDialog.setMessage("Menghapus data...");
         progressDialog.show();
-        db.collection("restaurant").document(menuAdminItems.get(position).getDocId())
+        db.collection("restaurant").document(menuAdminItems.get(position).getId())
                 .delete()
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -135,6 +133,13 @@ public class FragmentMenuAdmin extends Fragment implements RecyclerViewInterface
 
     @Override
     public void onEdit(int position) {
-
+        MenuAdminItem menuAdminItem = menuAdminItems.get(position);
+        Intent intent = new Intent(requireContext(), UpdateMenu.class);
+        intent.putExtra("docId", menuAdminItem.getId());
+        intent.putExtra("name", menuAdminItem.getNamaMakanan());
+        intent.putExtra("harga", menuAdminItem.getHargaMakanan());
+        intent.putExtra("desc", menuAdminItem.getPenjelasanMakanan());
+        intent.putExtra("gambar", menuAdminItem.getImageResource());
+        startActivity(intent);
     }
 }

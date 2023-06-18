@@ -2,6 +2,7 @@ package com.lintang.coffee_point.adapter;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.lintang.coffee_point.Model.MenuAdminItem;
 import com.lintang.coffee_point.R;
+import com.lintang.coffee_point.UpdateMenu;
 
 import java.util.List;
 
@@ -24,7 +26,9 @@ public class MenuAdminAdapter extends RecyclerView.Adapter<MenuAdminAdapter.Menu
     private Context context;
     private  Dialog dialog;
 
-    public MenuAdminAdapter(Context context, List<MenuAdminItem> menuAdminItems, RecyclerViewInterface recyclerViewInterface) {
+    public MenuAdminAdapter(
+            Context context, List<MenuAdminItem> menuAdminItems,
+            RecyclerViewInterface recyclerViewInterface) {
         this.context = context;
         this.menuAdminItems = menuAdminItems;
         this.recyclerViewInterface = recyclerViewInterface;
@@ -59,7 +63,7 @@ public class MenuAdminAdapter extends RecyclerView.Adapter<MenuAdminAdapter.Menu
     }
 
 
-    public static class MenuViewHolder extends RecyclerView.ViewHolder {
+    public class MenuViewHolder extends RecyclerView.ViewHolder {
         ImageView imageMenu;
         TextView textNamaMakanan;
         TextView textHargaMakanan;
@@ -79,7 +83,19 @@ public class MenuAdminAdapter extends RecyclerView.Adapter<MenuAdminAdapter.Menu
             this.btn_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        MenuAdminItem menuItem = menuAdminItems.get(position);
 
+                        // Buka activity UpdateMenu untuk mengedit data dengan menggunakan Intent
+                        Intent intent = new Intent(context, UpdateMenu.class);
+                        intent.putExtra("id", menuItem.getId());
+                        intent.putExtra("name", menuItem.getNamaMakanan());
+                        intent.putExtra("harga", menuItem.getHargaMakanan());
+                        intent.putExtra("desc", menuItem.getPenjelasanMakanan());
+                        intent.putExtra("gambar", menuItem.getImageResource());
+                        context.startActivity(intent);
+                    }
                 }
             });
 

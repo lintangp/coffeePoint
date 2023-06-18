@@ -47,7 +47,7 @@ public class MenuAdmin extends AppCompatActivity implements RecyclerViewInterfac
         recyclerViewMenuAdmin.setAdapter(menuAdminAdapter);
         btn_add = findViewById(R.id.btn_add);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL);
 
         showData();
@@ -61,7 +61,7 @@ public class MenuAdmin extends AppCompatActivity implements RecyclerViewInterfac
         });
     }
 
-    public void showData(){
+    public void showData() {
         progressDialog.setTitle("Loading");
         progressDialog.setMessage("Mengambil data...");
         progressDialog.show();
@@ -72,14 +72,14 @@ public class MenuAdmin extends AppCompatActivity implements RecyclerViewInterfac
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         menuAdminItems.clear();
-                        if(task.isSuccessful()){
-                            for (QueryDocumentSnapshot document : task.getResult()){
-                                MenuAdminItem menuAdmin = new MenuAdminItem(document.getId(), document.getString("name"), document.getString("harga"), document.getString("desc"),document.getString("gambar"));
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                MenuAdminItem menuAdmin = new MenuAdminItem(document.getId(), document.getString("name"), document.getString("harga"), document.getString("desc"), document.getString("gambar"));
                                 menuAdminItems.add(menuAdmin);
                             }
                             menuAdminAdapter.notifyDataSetChanged();
 
-                        }else{
+                        } else {
                             Toast.makeText(getApplicationContext(), "Data gagal di ambil", Toast.LENGTH_SHORT).show();
                         }
                         progressDialog.dismiss();
@@ -92,11 +92,11 @@ public class MenuAdmin extends AppCompatActivity implements RecyclerViewInterfac
 
     }
 
-    public void onDelete(int position){
+    public void onDelete(int position) {
         progressDialog.setTitle("Loading");
         progressDialog.setMessage("Menghapus data...");
         progressDialog.show();
-        db.collection("restaurant").document(menuAdminItems.get(position).getDocId())
+        db.collection("restaurant").document(menuAdminItems.get(position).getId())
                 .delete()
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -119,7 +119,7 @@ public class MenuAdmin extends AppCompatActivity implements RecyclerViewInterfac
     }
 
     @Override
-    public void onEdit(int porition) {
+    public void onEdit(int position) {
 
     }
 }

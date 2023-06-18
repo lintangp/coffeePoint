@@ -59,11 +59,11 @@ public class AddItem extends AppCompatActivity {
         restaurantCollection = db.collection("restaurant");
 
 
-        ed_judul = findViewById(R.id.editTextName);
-        gambar = findViewById(R.id.gambar);
-        ed_harga = findViewById(R.id.editPrice);
-        ed_desk = findViewById(R.id.editDesc);
-        save = findViewById(R.id.save);
+        ed_judul = findViewById(R.id.etAddName);
+        gambar = findViewById(R.id.addGambar);
+        ed_harga = findViewById(R.id.etAddPrice);
+        ed_desk = findViewById(R.id.etAddDesc);
+        save = findViewById(R.id.saveInsert);
 
         gambar.setOnClickListener(v->{
             selectedImage();
