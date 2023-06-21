@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
@@ -14,15 +13,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/text1"
+        android:id="@+id/textJudul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Android Coffee Point"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="18dp"
-        android:textStyle="bold"
+        android:text="ini nama cafe"
         android:textColor="@color/coklat_tua"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mapView" />
 
@@ -30,12 +29,20 @@
         android:id="@+id/textinfo"
         android:layout_width="397dp"
         android:layout_height="400dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a ex aliquam nisi pulvinar aliquet. Sed fringilla ante id mi mattis, ut tempor erat luctus. Ut vel est eu elit facilisis cursus. Nam gravida molestie consectetur. Quisque at consequat nunc. Donec consequat lacinia mauris, sit amet suscipit felis vulputate eget. Quisque fermentum lectus non est egestas bibendum. Cras eleifend vehicula consectetur. Sed sit amet quam pharetra, finibus justo id, cursus nulla."
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text1" />
+        app:layout_constraintTop_toBottomOf="@+id/texttanggal" />
 
-
+    <TextView
+        android:id="@+id/texttanggal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ini tanggal"
+        android:textSize="20sp"
+        android:textColor="@color/coklat_tua"
+        app:layout_constraintStart_toStartOf="@+id/textJudul"
+        app:layout_constraintTop_toBottomOf="@+id/textJudul" />
 </androidx.constraintlayout.widget.ConstraintLayout>
