@@ -55,7 +55,8 @@ public class FragmentInfo extends Fragment implements OnMapReadyCallback {
 
             requestQueue = Volley.newRequestQueue(requireContext());
 
-            String url = "http://192.168.207.148/coffee_point/";
+            //IP nya isi ip lokal kalian sendiri yak, kalo misal mau coba jalanin
+            String url = "http://192.168.207.148/info_api/";
             JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                     new Response.Listener<JSONArray>() {
                         @Override
