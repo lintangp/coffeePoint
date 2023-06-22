@@ -25,13 +25,12 @@
         android:id="@+id/tvNamaDepan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="140dp"
         android:fontFamily="@font/open_sans_semibold"
         android:text="Nama Depan"
         android:textColor="@color/black"
         android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/etNamaDepan"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -45,7 +44,8 @@
         android:padding="10dp"
         android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/tvNamaDepan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNamaDepan" />
 
     <TextView
