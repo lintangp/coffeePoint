@@ -17,7 +17,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity{
     FragmentManager fm;
     Fragment info, MenuAdmin;
     BottomNavigationView bottomNavigationView;
@@ -28,26 +28,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         this.bottomNavigationView = this.findViewById(R.id.bottomNavigationView);
-
         this.fm = getSupportFragmentManager();
         this.info = new FragmentInfo();
         this.MenuAdmin = new FragmentMenuAdmin();
 
-        // sementara, seharusnya diganti home/dashboard
         getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, MenuAdmin).commit();
-
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
 
                     case R.id.menu_beranda:
-                        // menampilkan home/dashboard
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, MenuAdmin).commit();
                         return true;
 
                     case R.id.menu_tentang:
-                        // menampilkan info restoran
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, info).commit();
                         return true;
 
@@ -55,34 +50,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
             }
         });
-
-
-    }
-
-
-    @Override
-    public void onClick(View view) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        // contoh ngakases data dari firestore
-        db.collection("restaurant").document("info").get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if (documentSnapshot.exists()) {
-                            String info = documentSnapshot.getString("text");
-                            // Display the data in the log
-                            Log.d("Firestore", "Info: " + info);
-                        } else {
-                            Log.d("Firestore", "No such document");
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("Firestore", "Error getting document", e);
-                    }
-                });
     }
 }

@@ -38,7 +38,7 @@ import org.json.JSONObject;
 public class FragmentInfo extends Fragment implements OnMapReadyCallback {
     private MapView mapView;
     private GoogleMap map;
-    private TextView info, nama, tanggal ;
+    private TextView info, nama, tanggal;
     private RequestQueue requestQueue;
 
         @Nullable
@@ -56,7 +56,7 @@ public class FragmentInfo extends Fragment implements OnMapReadyCallback {
             requestQueue = Volley.newRequestQueue(requireContext());
 
             //IP nya isi ip lokal kalian sendiri yak, kalo misal mau coba jalanin
-            String url = "http://192.168.207.148/info_api/";
+            String url = "http://10.200.227.179/info_api/";
             JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                     new Response.Listener<JSONArray>() {
                         @Override
