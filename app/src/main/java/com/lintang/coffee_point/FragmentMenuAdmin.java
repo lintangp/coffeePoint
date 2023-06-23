@@ -102,11 +102,6 @@ public class FragmentMenuAdmin extends Fragment implements RecyclerViewInterface
                 });
     }
 
-    @Override
-    public void onClick(int position) {
-
-    }
-
     public void onDelete(int position) {
         progressDialog.setTitle("Loading");
         progressDialog.setMessage("Menghapus data...");

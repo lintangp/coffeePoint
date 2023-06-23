@@ -24,12 +24,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyC5YlXruHxuR4QP2K8Y-waof217Dpduv5s" />
-        <activity
-            android:name=".MenuAdmin"
-            android:exported="false" />
-        <activity
-            android:name=".Menu"
-            android:exported="false" />
+
         <activity
             android:name=".Login"
             android:exported="false" >
@@ -45,18 +40,11 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" >
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
         </activity>
         <activity
             android:name=".AddItem"
             android:exported="true" />
-        <activity
-            android:name=".History"
-            android:exported="true" >
-        </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

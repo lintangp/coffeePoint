@@ -19,22 +19,17 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     FragmentManager fm;
-    Fragment detailMenu, checkout, history, info, MenuAdmin;
+    Fragment info, MenuAdmin;
     BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       /* Button button = findViewById(R.id.button);
-        button.setOnClickListener(this);*/
 
         this.bottomNavigationView = this.findViewById(R.id.bottomNavigationView);
 
         this.fm = getSupportFragmentManager();
-        this.detailMenu = new FragmentDetailMenu();
-        this.checkout = new FragmentCheckout();
-        this.history = new FragmentHistory();
         this.info = new FragmentInfo();
         this.MenuAdmin = new FragmentMenuAdmin();
 
@@ -49,16 +44,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     case R.id.menu_beranda:
                         // menampilkan home/dashboard
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, MenuAdmin).commit();
-                        return true;
-
-                    case R.id.menu_pesanan:
-                        // menampilkan pesanan
-                        getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, checkout).commit();
-                        return true;
-
-                    case R.id.menu_riwayat:
-                        // menampilkan history
-                        getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, history).commit();
                         return true;
 
                     case R.id.menu_tentang:

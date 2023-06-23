@@ -4,17 +4,6 @@
         android:id="@+id/menu_beranda"
         android:title="Beranda"
         android:icon="@drawable/baseline_fastfood_24" />
-
-    <item
-        android:id="@+id/menu_pesanan"
-        android:title="Pesanan"
-        android:icon="@drawable/baseline_shopping_cart_24" />
-
-    <item
-        android:id="@+id/menu_riwayat"
-        android:title="Riwayat"
-        android:icon="@drawable/baseline_receipt_long_24" />
-
     <item
         android:id="@+id/menu_tentang"
         android:title="Tentang"
